@@ -1,0 +1,24 @@
+<%- include('partials/header'); %>
+
+<body>
+    <%- include('partials/navbar'); %>
+    <div class="container">
+        <div class="card-header mt-4">
+            <h3><%= questions.titulo %></h3>
+            <p><%= questions.descricao %></p>
+        </div>
+         <form class="mt-4" action="/answer" method="POST">
+             <h4>Adicionar resposta</h4>
+             <textarea placeholder="Digite sua resposta..." class="form-control" name="text"></textarea>
+             <input type="hidden" name="question" value="<%= questions.id %>">
+             <button type="submit" class="btn btn-success mt-4">Enviar</button>
+             <a href="/" class="btn btn-primary mt-4">Voltar</a>
+         </form>
+         <h4>Resposta banco de dados</h4>
+         <% answers.forEach(answer => { %>
+            <%= answer.text %>
+         <% }) %>
+    </div>
+</body>
+
+<%- include('partials/footer'); %>
