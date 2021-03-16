@@ -14,10 +14,16 @@
              <button type="submit" class="btn btn-success mt-4">Enviar</button>
              <a href="/" class="btn btn-primary mt-4">Voltar</a>
          </form>
-         <h4>Resposta banco de dados</h4>
-         <% answers.forEach(answer => { %>
-            <%= answer.text %>
-         <% }) %>
+                 <h4 class="mt-4">Respostas</h4>
+                 <hr>
+             <% answers.forEach(answer => { %>
+                <div class="card mt-4 mb-4">
+                    <div class="card-body">            
+                        <%= answer.text %>
+                    </div>
+                </div>
+                <% }) %>
+         </div>
     </div>
 </body>
 

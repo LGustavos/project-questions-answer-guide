@@ -8,15 +8,6 @@ const dateFns = require('date-fns');
 const pt = require('date-fns/locale/pt');
 const question = require('./database/models/question');
 
-connection
-    .authenticate()
-    .then(() => {
-        console.log('Conexão estabelecida com banco de dados')
-    })
-    .catch((err) => {
-        console.log(err)
-    })
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
@@ -56,7 +47,8 @@ app.get('/pergunta/:id', (req, res) => {
     }).then(questions => {
         if (questions != undefined) {
             answerModel.findAll({
-                where: { question_id: id }
+                where: { question_id: id },
+                order:  [ ['id', 'DESC'] ]
             }).then((answers) => {
                 res.render('asks', {
                     questions,
